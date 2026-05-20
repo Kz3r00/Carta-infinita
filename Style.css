@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #f9c7c7 0%, #f3a0a0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', 'Georgia', cursive, sans-serif;
+    padding: 16px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.envelope {
+    width: 320px;
+    height: 220px;
+    background: #fdf5e6;
+    border-radius: 10px 10px 6px 6px;
+    position: relative;
+    box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.02);
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    background: #e6cfa0;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 60%);
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-origin: top;
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    background: #f7e9cd;
+    border-radius: 0 0 8px 8px;
+    z-index: 1;
+}
+
+.letter {
+    position: absolute;
+    bottom: 12px;
+    left: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 6px;
+    padding: 16px 12px;
+    min-height: 100px;
+    background: #fffef7;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, opacity 0.2s ease;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f0e0b0;
+}
+
+#message {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #4a2e2a;
+    font-weight: 500;
+    font-style: italic;
+    word-break: break-word;
+}
+
+/* Envelope aberto */
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+    transform: translateY(-70px);
+}
+
+.close-btn {
+    background: #8b5a2b;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px 28px;
+    border-radius: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    transition: 0.2s;
+    font-family: inherit;
+}
+
+.close-btn:hover {
+    background: #5e3e1e;
+    transform: scale(0.97);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .envelope {
+        width: 280px;
+        height: 190px;
+    }
+    .letter {
+        padding: 12px 8px;
+    }
+    #message {
+        font-size: 0.85rem;
+    }
+}
